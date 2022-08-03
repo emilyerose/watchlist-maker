@@ -1,6 +1,7 @@
-* {
+
+
+body {
     background-color: black;
-    /* border: 1px solid red; */
 }
 
 h2 {
@@ -8,7 +9,7 @@ h2 {
     font-weight: 600;
 }
 
-.title {
+.main-title {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: #ffa502;
 }
