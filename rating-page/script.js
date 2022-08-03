@@ -5,17 +5,20 @@ var toWatchlistButton = document.querySelector('#button1');
 var omdbAPIkey = '1260ba33';
 var watchmodeAPIkey = 'h0vFF0GYi3hvZkzF4vw5LphfH6Nx2LfrwlxaFQXw'
 var filmid;
+var searchURL;
+
+//this page should always be called for the first time with a film search, so load that film
+if (window.location.search) {
+    let query = window.location.search.slice(2);
+    getFilm(query);
+}
+
 
 searchform.addEventListener('submit', (event) => {
     event.preventDefault();
     searchentry = document.querySelector('input');
     getFilm(searchentry.value);
     searchentry.value='';
-})
-
-
-addButton.addEventListener('click', () => {
-    addToWatchlist(filmid);
 })
 
 removeButton.addEventListener('click', () => {
@@ -48,7 +51,7 @@ function getFilm(title) {
     })
     .then(function(imdbID) {
         watchmodequery = `https://api.watchmode.com/v1/title/${imdbID}/sources/?apiKey=${watchmodeAPIkey}&regions=US`
-        //watchmodequery = 'https://api.watchmode.com/v1/sources/?regions=US&apiKey=' + watchmodeAPIkey
+
         fetch(watchmodequery)
         .then(function (response) {
             return response.json();
@@ -71,9 +74,12 @@ function getFilm(title) {
                 sources: subscription,
                 plot: plot,
             }
-            localStorage.setItem(filmID,JSON.stringify(obj));
-            
+            localStorage.setItem(filmID,JSON.stringify(obj));   
         }
+
+        addButton.addEventListener('click', () => {
+            addToWatchlist(filmid);
+        })
            
         })
     })
