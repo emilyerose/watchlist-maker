@@ -1,0 +1,32 @@
+* {
+    background-color: black;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.navbar {
+    background-color: black;
+}
+
+.input {
+    background-color: rgb(253, 51, 51);
+}
+
+.card {
+    background-color: black;
+    box-shadow: none;
+}
+
+@media only screen and (min-width: 769px) {
+.main {
+      margin-top: 30px;
+    }
+
+.movie-cards {
+    margin-top: 30px;
+
+    }
+  }
