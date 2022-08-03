@@ -1,4 +1,7 @@
 var searchform = document.querySelector('.searchform');
+var addButton = document.querySelector('#button2');
+var removeButton = document.querySelector('#button3');
+var toWatchlistButton = document.querySelector('#button1');
 var omdbAPIkey = '1260ba33';
 var watchmodeAPIkey = 'h0vFF0GYi3hvZkzF4vw5LphfH6Nx2LfrwlxaFQXw'
 var filmid;
@@ -15,6 +18,13 @@ addButton.addEventListener('click', () => {
     addToWatchlist(filmid);
 })
 
+removeButton.addEventListener('click', () => {
+    localStorage.removeItem(filmid);
+})
+
+toWatchlistButton.addEventListener('click', () => {
+    window.location.assign('../index.html');
+})
 
 function getFilm(title) {
     omdbquery = 'https://www.omdbapi.com/?apikey=' + omdbAPIkey +'&t=' + title;
@@ -55,6 +65,7 @@ function getFilm(title) {
            function addToWatchlist(filmID) {
             let obj = {
                 title: formaltitle,
+                id: filmID,
                 runtime: parseFloat(data.Runtime),
                 postersrc: posterlink, 
                 sources: subscription,
