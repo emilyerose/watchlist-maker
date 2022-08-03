@@ -4,12 +4,18 @@ watchmodeAPIkey = 'h0vFF0GYi3hvZkzF4vw5LphfH6Nx2LfrwlxaFQXw'
 
 function getFilm(title) {
     omdbquery = 'https://www.omdbapi.com/?apikey=' + omdbAPIkey +'&t=' + title;
+    let postersrc;
+    let title;
+    let runtime;
+    let posterlink;
+    let plot;
+    let subscription = [];
     fetch(omdbquery)
     .then(function (response) {
         return response.json();
     })
     .then(function (data) {
-        let postersrc = data.Poster;
+        posterlink = data.Poster;
         console.log(data)
         let rottentomatoes;
         if (data.Ratings[1]){
@@ -17,14 +23,9 @@ function getFilm(title) {
         }
         
         let id = data.imdbID;
-        function addToWatchlist(filmID) {
-            let obj = {
-                title: data.Title,
-                runtime: parseFloat(data.Runtime),
-            }
-            localStorage.setItem('id',JSON.stringify(obj));
-            
-        }
+        runtime = parseFloat(data.Runtime);
+        title = data.Title;
+        plot = data.Plot;
         return id
     })
     .then(function(imdbID) {
@@ -41,7 +42,20 @@ function getFilm(title) {
             if (source.type==="sub") {
                 subscription.push(source.name)
             }
-           } 
+           }
+           
+           function addToWatchlist(filmID) {
+            let obj = {
+                title: data.Title,
+                runtime: parseFloat(data.Runtime),
+                postersrc: posterlink, 
+                sources: subscription,
+                plot: plot,
+            }
+            localStorage.setItem('id',JSON.stringify(obj));
+            
+        }
+           
         })
     })
 }
