@@ -1,6 +1,7 @@
 var searchform = document.querySelector('.searchform');
 var omdbAPIkey = '1260ba33';
 var watchmodeAPIkey = 'h0vFF0GYi3hvZkzF4vw5LphfH6Nx2LfrwlxaFQXw'
+var filmid;
 
 searchform.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -10,6 +11,9 @@ searchform.addEventListener('submit', (event) => {
 })
 
 
+addButton.addEventListener('click', () => {
+    addToWatchlist(filmid);
+})
 
 
 function getFilm(title) {
@@ -18,24 +22,19 @@ function getFilm(title) {
     let runtime;
     let posterlink;
     let plot;
-    let subscription = [];
     fetch(omdbquery)
     .then(function (response) {
         return response.json();
     })
     .then(function (data) {
         console.log(data)
-        let rottentomatoes;
-        if (data.Ratings[1]){
-            rottentomatoes = data.Ratings[1].Value
-        }
-        
-        let id = data.imdbID;
+        let ratings = data.Ratings;    
+        filmid = data.imdbID;
         runtime = parseFloat(data.Runtime);
         formaltitle = data.Title;
         plot = data.Plot;
         posterlink = data.Poster;
-        return id
+        return filmid
     })
     .then(function(imdbID) {
         watchmodequery = `https://api.watchmode.com/v1/title/${imdbID}/sources/?apiKey=${watchmodeAPIkey}&regions=US`
@@ -46,7 +45,7 @@ function getFilm(title) {
         })
         .then(function (data) {
            console.log(data)
-           let subscription = []
+           let subscription = [];
            for (source in data) {
             if (source.type==="sub") {
                 subscription.push(source.name)
@@ -61,7 +60,7 @@ function getFilm(title) {
                 sources: subscription,
                 plot: plot,
             }
-            localStorage.setItem('id',JSON.stringify(obj));
+            localStorage.setItem(filmID,JSON.stringify(obj));
             
         }
            
