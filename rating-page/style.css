@@ -1,11 +1,41 @@
-.title {
+#name {
     color: orange;
+    margin: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+.navbar {
+    background-color: black;
 }
 
 body {
     background-color: black;
 }
 
-.button, .card, .card-content {
-    margin: 15px;
+.logo {
+    height: 30px;
+    padding-left: 7px;
+    margin-top: 8px;
+}
+
+#button1 {
+    margin: 10px;
+}
+
+
+#button2 {
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+
+#button3 {
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+
+}
+
+#ratingbox {
+    margin-left: 10px;
 }
