@@ -15,7 +15,9 @@
 <header>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <h1 class="title">WATCH ME NOW</h1>
+          <h1 class="title" id="name">WATCH ME NOW</h1>
+          <img class="logo" src="logo.png" alt="tv-logo">
+        
         </div>
 
         <div class="navbar-end">
@@ -28,8 +30,8 @@
 <body>
     <div class="columns">
     <div class="column is-6">
-    <button class="button"><strong> Back to Watchlist</strong></button>
-        <div class="card">
+    <button class="button" id="button1"><strong> Back to Watchlist</strong></button>
+        <div class="card" id="postercard">
             <div class="card-image">
                 <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
             </div>
@@ -57,11 +59,11 @@
           </div>
         </div>
         <div class="column is-3">
-            <button class="button"><strong>Add to Watchlist</strong></button>
-            <button class="button"><strong> Remove from Watchlist</strong></button>
+            <button class="button" id="button2"><strong>Add to Watchlist</strong></button>
+            <button class="button" id="button3"><strong> Remove from Watchlist</strong></button>
             <div class="card">
                 <div class="card-content">
-                  <div class="content">
+                  <div class="content" id="ratingbox">
                     Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit 
                   </div>
                 </div>
