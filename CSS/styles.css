@@ -12,6 +12,7 @@ h2 {
 .main-title {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: #ffa502;
+  margin: 10px;
 }
 
 .dropdown {
@@ -22,8 +23,14 @@ h2 {
     background-color: black;
 }
 
+.logo {
+    height: 30px;
+    padding-left: 7px;
+    margin-top: 8px;
+}
+
 .input {
-    background-color: rgb(253, 51, 51);
+    background-color: white;
 }
 
 .card {
