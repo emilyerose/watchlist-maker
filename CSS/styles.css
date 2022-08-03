@@ -8,6 +8,11 @@ h2 {
     font-weight: 600;
 }
 
+.title {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: #ffa502;
+}
+
 .dropdown {
     background-color: white;
 }
