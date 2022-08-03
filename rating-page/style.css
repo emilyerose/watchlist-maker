@@ -1,3 +1,11 @@
-:root {
-    background-color: orange;
+.title {
+    color: orange;
+}
+
+body {
+    background-color: black;
+}
+
+.button, .card, .card-content {
+    margin: 15px;
 }
