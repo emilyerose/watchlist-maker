@@ -1,15 +1,17 @@
-var searchform = document.querySelector('.searchform');
+// var searchform = document.querySelector('.searchform');
 // var addButton = document.getElementById('button2');
 // var removeButton = document.getElementById('button3');
 var toWatchlistButton = document.getElementById('button1');
-var ratingBox = document.getElementById('ratingbox');
+var rottenTomatoes = document.getElementById('rottentomatoes');
+var imdbRating = document.getElementById('imdbrating');
+var metaCritic = document.getElementById('metacritic')
 var posterCard = document.getElementById('postercard');
 var filmTitle = document.getElementById('filmtitle');
 var runTime = document.getElementById('runtime');
 var plot = document.getElementById('plot');
 var omdbAPIkey = '1260ba33';
 var watchmodeAPIkey = 'h0vFF0GYi3hvZkzF4vw5LphfH6Nx2LfrwlxaFQXw'
-var filmid;
+var filmid = '';
 
 //this page should always be called for the first time with a film search, so load that film
 if (window.location.search) {
@@ -18,12 +20,12 @@ if (window.location.search) {
 }
 
 
-searchform.addEventListener('submit', (event) => {
-    event.preventDefault();
-    searchentry = document.querySelector('input');
-    getFilm(searchentry.value);
-    searchentry.value='';
-})
+// searchform.addEventListener('submit', (event) => {
+//     event.preventDefault();
+//     searchentry = document.querySelector('input');
+//     getFilm(searchentry.value);
+//     searchentry.value='';
+// })
 
 // removeButton.addEventListener('click', () => {
 //     localStorage.removeItem(filmid);
@@ -35,22 +37,21 @@ toWatchlistButton.addEventListener('click', () => {
 
 function getFilm(title) {
     omdbquery = 'https://www.omdbapi.com/?apikey=' + omdbAPIkey +'&t=' + title;
-    let formaltitle;
-    let runtime;
-    let posterlink;
-    let plot;
+
     fetch(omdbquery)
     .then(function (response) {
         return response.json();
     })
     .then(function (data) {
         console.log(data)
-        let ratings = data.Ratings;    
-        filmid = data.imdbID;
-        runtime = parseFloat(data.Runtime);
-        formaltitle = data.Title;
+        rottenTomatoes.textContent = data.Ratings[1];  
+        imdbRating.textContent = data.imdbRating;  
+        metaCritic.textContent = data.Ratings[2];
+        filmid.textContent = data.imdbID;
+        runTime.textContent = parseFloat(data.Runtime);
+        filmTitle.textContent = data.Title;
         plot = data.Plot;
-        posterlink = data.Poster;
+        posterCard.src = data.Poster;
         return filmid
     })
     .then(function(imdbID) {
@@ -70,17 +71,17 @@ function getFilm(title) {
             }
            }
            
-           function addToWatchlist(filmID) {
-            let obj = {
-                title: filmTitle,
-                id: filmID,
-                runtime: parseFloat(runtime),
-                postersrc: posterlink, 
-                sources: subscription,
-                plot: plot,
-            }
-            localStorage.setItem(filmID,JSON.stringify(obj));   
-        }
+        //    function addToWatchlist(filmID) {
+        //     let obj = {
+        //         title: filmTitle,
+        //         id: filmID,
+        //         runtime: parseFloat(runtime),
+        //         postersrc: posterlink, 
+        //         sources: subscription,
+        //         plot: plot,
+        //     }
+        //     localStorage.setItem(filmID,JSON.stringify(obj));   
+        // }
 
         // addButton.addEventListener('click', () => {
         //     addToWatchlist(filmid);
