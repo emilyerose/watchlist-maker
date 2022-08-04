@@ -5,7 +5,7 @@ var toWatchlistButton = document.getElementById('button1');
 var rottenTomatoes = document.getElementById('rottentomatoes');
 var imdbRating = document.getElementById('imdbrating');
 var metaCritic = document.getElementById('metacritic')
-var posterCard = document.getElementById('postercard');
+var posterCard = document.getElementById('posterimg');
 var filmTitle = document.getElementById('filmtitle');
 var runTime = document.getElementById('runtime');
 var plot = document.getElementById('plot');
@@ -45,15 +45,16 @@ function getFilm(title) {
     })
     .then(function (data) {
         console.log(data)
-        rottenTomatoes.textContent = data.Ratings[1];  
-        imdbRating.textContent = data.imdbRating;  
-        metaCritic.textContent = data.Ratings[2];
+        rottenTomatoes.textContent = "Rotten Tomatoes: " + data.Ratings[1].Value;  
+        imdbRating.textContent = "IMDb: " + data.imdbRating + "/10";  
+        metaCritic.textContent = "Metacritic: " + data.Ratings[2].Value;
         filmid.textContent = data.imdbID;
-        runTime.textContent = parseFloat(data.Runtime);
+        runTime.textContent = data.Runtime;
         filmTitle.textContent = data.Title;
-        plot = data.Plot;
+        plot.textContent = data.Plot;
         posterCard.src = data.Poster;
-        return filmid
+        posterCard.alt = data.Title + " Poster";
+        return data.imdbID
     })
     .then(function(imdbID) {
         watchmodequery = `https://api.watchmode.com/v1/title/${imdbID}/sources/?apiKey=${watchmodeAPIkey}&regions=US`
