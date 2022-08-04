@@ -22,7 +22,6 @@ searchform.addEventListener('submit', (event) => {
       }
       
       async function asyncCall() {
-        console.log('calling');
         const result = await resolveAfter2Seconds();
         window.location.assign('./rating-page/index.html?f=' + film)
       }
@@ -31,12 +30,12 @@ searchform.addEventListener('submit', (event) => {
 })
 
 document.addEventListener('click', (event) => {
-    if (event.target.matches('remove-wl')){
+    if (event.target.matches('.remove-wl')){
         let id = event.target.id
         localStorage.removeItem(id)
+        window.location.reload()
     }
 
-    //window.location.reload()
 })
 
 
@@ -50,9 +49,7 @@ async function getFilm(title) {
     .then(function (response) {
         return response.json();
     })
-    .then(function (data) {
-        console.log(data)
-        let ratings = data.Ratings;    
+    .then(function (data) { 
         filmid = data.imdbID;
         runtime = parseFloat(data.Runtime);
         formaltitle = data.Title;
@@ -68,7 +65,6 @@ async function getFilm(title) {
             return response.json();
         })
         .then(function (data) {
-           console.log(data)
            let subscription = [];
            for (let n =0; n<data.length; n++) {
             let source = data[n];
@@ -102,7 +98,6 @@ populatePage();
     for (let x =0; x<localStorage.length; x++) {
         let key = localStorage.key(x);
         let obj = JSON.parse(localStorage.getItem(key));
-        console.log(obj);
         let title = obj.title;
         let runtime = obj.runtime;
         let posterlink = obj.postersrc;
@@ -119,9 +114,9 @@ populatePage();
               </button>
             </div>
             <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-              <div class="remove-wl dropdown-content" id = ${obj.id}>
+              <div class=" dropdown-content" >
                 <div class="dropdown-item">
-                  <p class="removeBtn"> Remove from watchlist </p>
+                  <p class="remove-wl removeBtn" id = ${obj.id}> Remove from watchlist </p>
                 </div>
               </div>
             </div>
