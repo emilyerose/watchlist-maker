@@ -1,11 +1,10 @@
 var searchform = document.querySelector('.searchform');
-var addButton = document.getElementById('button2');
-var removeButton = document.getElementById('button3');
+// var addButton = document.getElementById('button2');
+// var removeButton = document.getElementById('button3');
 var toWatchlistButton = document.getElementById('button1');
 var omdbAPIkey = '1260ba33';
 var watchmodeAPIkey = 'h0vFF0GYi3hvZkzF4vw5LphfH6Nx2LfrwlxaFQXw'
 var filmid;
-var searchURL;
 
 //this page should always be called for the first time with a film search, so load that film
 if (window.location.search) {
@@ -21,13 +20,13 @@ searchform.addEventListener('submit', (event) => {
     searchentry.value='';
 })
 
-removeButton.addEventListener('click', () => {
-    localStorage.removeItem(filmid);
-})
+// removeButton.addEventListener('click', () => {
+//     localStorage.removeItem(filmid);
+// })
 
-toWatchlistButton.addEventListener('click', () => {
-    window.location.assign('../index.html');
-})
+// toWatchlistButton.addEventListener('click', () => {
+//     window.location.assign('../index.html');
+// })
 
 function getFilm(title) {
     omdbquery = 'https://www.omdbapi.com/?apikey=' + omdbAPIkey +'&t=' + title;
