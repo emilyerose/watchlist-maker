@@ -45,9 +45,11 @@ function getFilm(title) {
     })
     .then(function (data) {
         console.log(data)
-        rottenTomatoes.textContent = "Rotten Tomatoes: " + data.Ratings[1].Value;  
+        if (data.Ratings.length>1) {
+            rottenTomatoes.textContent = "Rotten Tomatoes: " + data.Ratings[1].Value; 
+            metaCritic.textContent = "Metacritic: " + data.Ratings[2].Value;
+        }
         imdbRating.textContent = "IMDb: " + data.imdbRating + "/10";  
-        metaCritic.textContent = "Metacritic: " + data.Ratings[2].Value;
         filmid.textContent = data.imdbID;
         runTime.textContent = data.Runtime;
         filmTitle.textContent = data.Title;
