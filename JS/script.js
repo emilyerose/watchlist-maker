@@ -17,7 +17,7 @@ searchform.addEventListener('submit', (event) => {
         return new Promise(resolve => {
           setTimeout(() => {
             resolve('resolved');
-          }, 1000);
+          }, 700);
         });
       }
       
@@ -102,7 +102,15 @@ populatePage();
         let runtime = obj.runtime;
         let posterlink = obj.postersrc;
         let plot = obj.plot;
-        let sourcesArr = obj.sources.join(', ');
+        let sourcesStr;
+        if (obj.sources.length) {
+            sourcesStr = 'Available to stream via ' + obj.sources.join(', ');
+        }
+        else {
+            sourcesStr = 'Not available on any subscription streaming sites'
+        }
+        
+
             var container = document.querySelector('.movie-cards');
             var card = document.createElement("div");
             card.classList.add('card','column', 'is-one-fifth', 'is-multiline');
@@ -116,7 +124,7 @@ populatePage();
             <div class="dropdown-menu" id="dropdown-menu4" role="menu">
               <div class=" dropdown-content" >
                 <div class="dropdown-item">
-                  <p class="remove-wl removeBtn" id = ${obj.id}> Remove from watchlist </p>
+                  <p class="remove-wl removeBtn" id = ${obj.id} style='cursor: pointer'> Remove from watchlist </p>
                 </div>
               </div>
             </div>
@@ -134,7 +142,7 @@ populatePage();
             <div class="media">
               <div class="media-content">
                 <p class="title is-4">${title}</p>
-                <h3 class="media-left streaming">Available to stream via: ${sourcesArr}</h3>
+                <h3 class="media-left streaming"> ${sourcesStr}</h3>
                 <div class="streaming-services"></div>
               </div>
             </div>
