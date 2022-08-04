@@ -91,8 +91,12 @@ async function getFilm(title) {
 populatePage();
 
  function populatePage() {
+  var container = document.querySelector('.movie-cards');
     if (localStorage.length===0) {
-        return
+       var noRecent = document.createElement('p');
+      //  noRecent.classList.add('is-half');
+       noRecent.textContent = "There are no items in your Watchlist currently.";
+       container.appendChild(noRecent);
     }
     else {
     for (let x =0; x<localStorage.length; x++) {
@@ -110,8 +114,6 @@ populatePage();
             sourcesStr = 'Not available on any subscription streaming sites'
         }
         
-
-            var container = document.querySelector('.movie-cards');
             var card = document.createElement("div");
             card.classList.add('card','column', 'is-one-fifth', 'is-multiline');
             card.innerHTML = `
