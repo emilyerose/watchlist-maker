@@ -124,7 +124,7 @@ populatePage();
            
            <div class="card-image">
             <figure>
-              <img
+              <img class="to-right"
                 src=${posterlink}
                 alt="${title} image"
               />
