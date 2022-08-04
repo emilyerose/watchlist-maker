@@ -110,7 +110,7 @@ populatePage();
         let sourcesArr = obj.sources.join(', ');
             var container = document.querySelector('.movie-cards');
             var card = document.createElement("div");
-            card.classList.add('card','column');
+            card.classList.add('card','column', 'is-one-fifth', 'is-multiline');
             card.innerHTML = `
             <div class="dropdown is-hoverable">
             <div class="dropdown-trigger">
@@ -148,6 +148,7 @@ populatePage();
               <br />
             </div>
            </div>`
+        
         
 
            container.appendChild(card);
