@@ -12,8 +12,22 @@ searchform.addEventListener('submit', (event) => {
     event.preventDefault();
     searchentry = document.querySelector('input');
     let film = (searchentry.value);
-    getFilm(film)
-    //window.location.assign('./rating-page/index.html?f=' + film)
+    getFilm(film);
+    function resolveAfter2Seconds() {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve('resolved');
+          }, 1000);
+        });
+      }
+      
+      async function asyncCall() {
+        console.log('calling');
+        const result = await resolveAfter2Seconds();
+        window.location.assign('./rating-page/index.html?f=' + film)
+      }
+      
+      asyncCall();
 })
 
 document.addEventListener('click', (event) => {
