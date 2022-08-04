@@ -1,7 +1,7 @@
 var searchform = document.querySelector('.searchform');
-var addButton = document.querySelector('#button2');
-var removeButton = document.querySelector('#button3');
-var toWatchlistButton = document.querySelector('#button1');
+var addButton = document.getElementById('button2');
+var removeButton = document.getElementById('button3');
+var toWatchlistButton = document.getElementById('button1');
 var omdbAPIkey = '1260ba33';
 var watchmodeAPIkey = 'h0vFF0GYi3hvZkzF4vw5LphfH6Nx2LfrwlxaFQXw'
 var filmid;
@@ -59,7 +59,8 @@ function getFilm(title) {
         .then(function (data) {
            console.log(data)
            let subscription = [];
-           for (source in data) {
+           for (let n =0; n<data.length; n++) {
+            let source = data[n];
             if (source.type==="sub") {
                 subscription.push(source.name)
             }
@@ -69,7 +70,7 @@ function getFilm(title) {
             let obj = {
                 title: formaltitle,
                 id: filmID,
-                runtime: parseFloat(data.Runtime),
+                runtime: parseFloat(runtime),
                 postersrc: posterlink, 
                 sources: subscription,
                 plot: plot,
