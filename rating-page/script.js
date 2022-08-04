@@ -2,6 +2,11 @@ var searchform = document.querySelector('.searchform');
 // var addButton = document.getElementById('button2');
 // var removeButton = document.getElementById('button3');
 var toWatchlistButton = document.getElementById('button1');
+var ratingBox = document.getElementById('ratingbox');
+var posterCard = document.getElementById('postercard');
+var filmTitle = document.getElementById('filmtitle');
+var runTime = document.getElementById('runtime');
+var plot = document.getElementById('plot');
 var omdbAPIkey = '1260ba33';
 var watchmodeAPIkey = 'h0vFF0GYi3hvZkzF4vw5LphfH6Nx2LfrwlxaFQXw'
 var filmid;
@@ -77,9 +82,9 @@ function getFilm(title) {
             localStorage.setItem(filmID,JSON.stringify(obj));   
         }
 
-        addButton.addEventListener('click', () => {
-            addToWatchlist(filmid);
-        })
+        // addButton.addEventListener('click', () => {
+        //     addToWatchlist(filmid);
+        // })
            
         })
     })
