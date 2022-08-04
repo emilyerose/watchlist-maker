@@ -31,9 +31,10 @@ if (window.location.search) {
 //     localStorage.removeItem(filmid);
 // })
 
-toWatchlistButton.addEventListener('click', () => {
-    window.location.assign('../index.html');
-})
+
+ toWatchlistButton.addEventListener('click', () => {
+     window.location.assign('../index.html');
+ })
 
 function getFilm(title) {
     omdbquery = 'https://www.omdbapi.com/?apikey=' + omdbAPIkey +'&t=' + title;
@@ -83,10 +84,6 @@ function getFilm(title) {
         //     localStorage.setItem(filmID,JSON.stringify(obj));   
         // }
 
-        // addButton.addEventListener('click', () => {
-        //     addToWatchlist(filmid);
-        // })
-           
         })
     })
 }
