@@ -29,6 +29,7 @@ searchform.addEventListener('submit', (event) => {
 //     localStorage.removeItem(filmid);
 // })
 
+
  toWatchlistButton.addEventListener('click', () => {
      window.location.assign('../index.html');
  })
@@ -72,7 +73,7 @@ function getFilm(title) {
            
            function addToWatchlist(filmID) {
             let obj = {
-                title: formaltitle,
+                title: filmTitle,
                 id: filmID,
                 runtime: parseFloat(runtime),
                 postersrc: posterlink, 
