@@ -1,4 +1,6 @@
-
+* {
+    color: rgb(156, 156, 156);
+}
 
 body {
     background-color: black;
@@ -7,12 +9,14 @@ body {
 h2 {
     font-size: 2rem;
     font-weight: 600;
+    color: rgb(156, 156, 156);
 }
 
 p {
     display: inline;
     margin: 0 auto;
     text-align: center;
+    color: rgb(156, 156, 156);
 
 }
 
@@ -20,6 +24,10 @@ p {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: #ffa502;
   margin: 10px;
+}
+
+.movie-title {
+    color: rgb(156, 156, 156);
 }
 
 .dropdown {
