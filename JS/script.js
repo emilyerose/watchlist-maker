@@ -12,6 +12,7 @@ searchform.addEventListener('submit', (event) => {
     event.preventDefault();
     searchentry = document.querySelector('input');
     let film = (searchentry.value);
+    let localLengthBefore = localStorage.length;
     getFilm(film);
     function resolveAfter2Seconds() {
         return new Promise(resolve => {
@@ -23,7 +24,12 @@ searchform.addEventListener('submit', (event) => {
       
       async function asyncCall() {
         const result = await resolveAfter2Seconds();
-        window.location.assign('./rating-page/index.html?f=' + film)
+        if (localStorage.length!==localLengthBefore) {
+            window.location.assign('./rating-page/index.html?f=' + film)
+        }
+        else{
+            searchentry.value='';
+        }
       }
       
       asyncCall();
@@ -47,7 +53,12 @@ async function getFilm(title) {
     let plot;
     fetch(omdbquery)
     .then(function (response) {
-        return response.json();
+        if (response.status ===200) {
+            return response.json();
+          }
+        else {
+            throw new Error('Your search did not return any movies. Please try again.');
+        }
     })
     .then(function (data) { 
         filmid = data.imdbID;
@@ -62,7 +73,12 @@ async function getFilm(title) {
 
         fetch(watchmodequery)
         .then(function (response) {
-            return response.json();
+            if (response.status ===200) {
+                return response.json();
+              }
+            else {
+                throw new Error('Your search did not return any movies. Please try again.');
+            }
         })
         .then(function (data) {
            let subscription = [];
@@ -82,10 +98,12 @@ async function getFilm(title) {
                 sources: subscription,
                 plot: plot,
             }
-            localStorage.setItem(filmid,JSON.stringify(obj));   
-           
+            localStorage.setItem(filmid,JSON.stringify(obj));
         })
+        .catch(error => alert(error))
+        
     })
+    .catch(error => console.error(error))
 }
 
 populatePage();
