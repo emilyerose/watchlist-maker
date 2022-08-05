@@ -1,3 +1,7 @@
+* {
+    color: rgb(156, 156, 156);
+}
+
 #name {
     color: orange;
     margin: 10px;
@@ -20,6 +24,24 @@ body {
     height: 30px;
     padding-left: 7px;
     margin-top: 8px;
+}
+
+.card {
+    background-color: black;
+    box-shadow: none;
+}
+
+.card-header-title {
+    color: rgb(156, 156, 156);
+    
+}
+
+#filmtitle {
+    color: rgb(156, 156, 156);  
+}
+
+#runtime {
+    color: rgb(156, 156, 156);
 }
 
 #button1 {

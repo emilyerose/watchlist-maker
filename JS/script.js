@@ -143,7 +143,7 @@ populatePage();
            <div class="card-content">
             <div class="media">
               <div class="media-content">
-                <p class="title is-4">${title}</p>
+                <p class="title movie-title is-4">${title}</p>
                 <h3 class="media-left streaming"> ${sourcesStr}</h3>
                 <div class="streaming-services"></div>
               </div>
