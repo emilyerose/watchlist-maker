@@ -10,16 +10,17 @@ Go to <a> https://github.com/emilyerose/watchlist-maker </a>.
 Click on Code and copy the SSH key to pull from git. <img src="assets/githubscreenshot.png">
 
 ## Usage
-
+<img src="assets/WatchmeNowhomepage.png">
+<img src="assets/ratingpage.png">
 
 ## Credits
 Emily Rose- <a> https://github.com/emilyerose </a>
 Worked with javascript and API calls.
 
 Lucas Rozon- <a> https://github.com/Zym0tic </a>
-Worked on HTML, CSS, and Bulma for homepage.
+Worked on HTML, CSS, and Bulma, javascript for homepage.
 
 Juliet Lamond- <a> https://github.com/jlamond37 </a>
-Worked on the design, HTML, CSS, and Bulma for the rating web page.
+Worked on the design, HTML, CSS, javascript, and Bulma for the rating web page.
 
 
